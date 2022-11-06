@@ -19,7 +19,7 @@ console.log(e.target.value);
  {
   document.querySelectorAll(".card-title").forEach(moneda=>{
     console.log(moneda)
-    moneda.textContent.toLowerCase().includes(e.target.value)
+    moneda.textContent.toLowerCase().includes(e.target.value.toLowerCase())
       ?moneda.parentElement.parentElement.removeAttribute("id","filtro")
       :moneda.parentElement.parentElement.setAttribute("id","filtro")
   });
