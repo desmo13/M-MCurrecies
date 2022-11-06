@@ -1,13 +1,33 @@
-const key = "8da8056a8c9b9820355430df2b218153f878a035";
 
-const url =  `https://api.getgeoapi.com/v2/currency/list?api_key=${key}&format=json`
 const url2= ` https://api.getgeoapi.com/v2/currency/convert
 ?api_key=8da8056a8c9b9820355430df2b218153f878a035
 &from=EUR
 &amount=1
 &format=json`
+async function ObtenerArray(){
+  let fetchUrl= await fetch(url2);
+  let fechtConvertido = await fetchUrl.json();
+  return fechtConvertido;
+}
 
-//document elements 
+//search
+document.getElementById("buscador").addEventListener("keyup",e=>{
+console.log(e.target.value);
+ //if(e.target.value)
+
+ if(e.keyCode===13)
+ {
+  document.querySelectorAll(".card-title").forEach(moneda=>{
+    console.log(moneda)
+    moneda.textContent.toLowerCase().includes(e.target.value)
+      ?moneda.parentElement.parentElement.removeAttribute("id","filtro")
+      :moneda.parentElement.parentElement.setAttribute("id","filtro")
+  });
+ }
+
+ 
+
+});
 
 
 //documents error
@@ -20,12 +40,11 @@ error.textContent="Error 404"
 
 async function asyncGet()
 {
-    let responseHTTp;
+
     let errorGet=false;
     
-     fetch(url2)
-      .then(response => {return response.json()})
-      .then(data =>{
+
+      ObtenerArray().then(data =>{
         console.log(data)
 
 
