@@ -67,7 +67,7 @@ async function asyncGet()
             cardSubName.textContent=`${data.updated_date}`;
             const cardText= document.createElement("p");
             cardText.classList.add("card-text");
-            cardText.textContent=`${element.rate}💸= 1€`;
+            cardText.textContent=`${element.rate.replace(".",",")}💸= 1€`;
 
 
 
